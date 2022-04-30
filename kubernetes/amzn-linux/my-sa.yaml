@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+ name: my-sa
+ namespace: default
+ annotations:
+   eks.amazonaws.com/role-arn:  arn:aws:iam::934841374016:role/enroute-bucket-full-access-role
