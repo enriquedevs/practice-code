@@ -4,9 +4,6 @@ metadata:
   name: enrique-garcia-student-k8s
   namespace: default
 spec:
-  serviceAccountName: my-sa
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
   replicas: 1
   selector:
     matchLabels:
@@ -16,6 +13,9 @@ spec:
       labels:
         app: enrique-garcia-student-k8s
     spec:
+      serviceAccountName: my-sa
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
       containers:
         - name: enrique-garcia-student-k8s
           image: 934841374016.dkr.ecr.us-west-2.amazonaws.com/enroute-registry:kafka-client-tls-iam
