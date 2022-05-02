@@ -17,8 +17,7 @@ RUN cp /usr/lib/jvm/java-11-openjdk-11.0.13.0.8-2.amzn2022.x86_64/lib/security/c
 # Adding Kafka IAM Config
 RUN mkdir /enroute/iam-kafka-auth-jar
 RUN wget https://github.com/aws/aws-msk-iam-auth/releases/download/v1.1.3/aws-msk-iam-auth-1.1.3-all.jar -P /enroute/iam-kafka-auth-jar
-RUN touch /enroute/.bash_profile
-RUN echo "export CLASSPATH=/enroute/iam-kafka-auth-jar/aws-msk-iam-auth-1.1.3-all.jar" > /enroute/.bash_profile
+ENV CLASSPATH=/enroute/iam-kafka-auth-jar/aws-msk-iam-auth-1.1.3-all.jar
 RUN touch /enroute/kafka_2.12-2.6.2/bin/client-iam.properties
 RUN echo -e "security.protocol=SASL_SSL\nsasl.mechanism=AWS_MSK_IAM\nsasl.jaas.config=software.amazon.msk.auth.iam.IAMLoginModule required;\nsasl.client.callback.handler.class=software.amazon.msk.auth.iam.IAMClientCallbackHandler" > /enroute/kafka_2.12-2.6.2/bin/client-iam.properties
 
