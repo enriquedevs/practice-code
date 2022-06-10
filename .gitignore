@@ -1,2 +1,6 @@
 # IntelliJ/Pycharm files
 .idea
+
+# Python cache files
+*/.pytest_cache
+*/__pycache__
