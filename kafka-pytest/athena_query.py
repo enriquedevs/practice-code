@@ -25,10 +25,10 @@ while True:
     )
     print(query_execution)
 
-    execution_status = query_execution['QueryExecution']['Status']['State']
-    print(f'Query execution state: {execution_status}')
+    execution_state = query_execution['QueryExecution']['Status']['State']
+    print(f'Query execution state: {execution_state}')
 
-    if retries == max_retries or execution_status == 'SUCCEEDED':
+    if retries == max_retries or execution_state == 'SUCCEEDED':
         break
 
     retries += 1
@@ -41,3 +41,6 @@ query_result = client.get_query_results(
 )
 
 print(query_result)
+
+
+print(f"Food Name from athena table: {query_result['ResultSet']['Rows'][1]['Data'][0]['VarCharValue']}")
